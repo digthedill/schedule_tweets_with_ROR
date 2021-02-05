@@ -1,0 +1,6 @@
+Hello <%= params[:user].email %>!
+
+Someone requested a password reset.
+
+If this was you, click the link to reset your password. This message will self destruct in 5 minutes.
+<%= link_to "Reset Password", password_reset_edit_url(token: @token) %>
