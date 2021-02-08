@@ -1,0 +1,19 @@
+<div class="mb-3">
+    <div class="p-4 mb-3">
+        <strong><%= tweet.body%></strong>
+    </div>
+    <div class="d-flex align-items-center mb-4">
+        <div class="me-4">
+            <%= image_tag tweet.twitter_account.image, class: "rounded-circle"%>
+            <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+        </div>
+    </div>
+    <% if tweet.published? %>
+    <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
+    <% else %>
+    Scheduled for <%= l tweet.published_at, format: :short %>
+    <%= link_to "Edit Tweet", edit_tweet_path(tweet) %>
+    <% end %>
+
+    <hr class="w-50">
+</div>
